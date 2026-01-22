@@ -1,17 +1,11 @@
 from flask import Blueprint, Response, json
-
 from ..models.person import Person, PersonSchema
-
-
 people_api = Blueprint("people", __name__)
 person_schema = PersonSchema()
-
-
 @people_api.route("/people", methods=["GET"])
 def get_all() -> Response:
     """
     Endpoint returning all people from the database.
-
     Returns:
         Response containing all people.
     """
@@ -22,4 +16,3 @@ def get_all() -> Response:
         mimetype="application/json",
         status=200,
     )
-
