@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import uuid
 
-from marshmallow import Schema, fields
 from sqlalchemy.dialects.postgresql import UUID
 
 from . import db
