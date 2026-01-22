@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, json, request
+from flask import Blueprint, Response, json
 
 from ..models.person import Person, PersonSchema
 
