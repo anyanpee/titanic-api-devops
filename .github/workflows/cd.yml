@@ -1,40 +1,46 @@
-name: Deploy to EKS
+name: CD to EKS
 
 on:
   push:
     branches:
-      - main  # change if your default branch is different
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      KUBE_CONFIG_B64: ${{ secrets.KUBE_CONFIG_B64 }}  # your EKS kubeconfig
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      IMAGE_NAME: anyankpele/titanic-api
+      IMAGE_TAG: latest
 
     steps:
-      # Step 1: Checkout code
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      # Step 2: Configure AWS credentials
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 3: Set up kubeconfig
-      - name: Configure kubeconfig
+      - name: Build and push Docker image
         run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > ~/.kube/config
-          chmod 600 ~/.kube/config
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          docker push $IMAGE_NAME:$IMAGE_TAG
 
-      # Step 4: Deploy manifests to EKS
-      - name: Apply Kubernetes manifests
+      - name: Set up kubectl
         run: |
-          kubectl apply -f k8s/
+          mkdir -p $HOME/.kube
+          echo "$KUBE_CONFIG_B64" | base64 --decode > $HOME/.kube/config
+          kubectl version --client
+
+      - name: Deploy to EKS
+        run: |
+          kubectl set image deployment/titanic-api titanic-api=$IMAGE_NAME:$IMAGE_TAG --record
           kubectl rollout status deployment/titanic-api
-
-      # Optional Step 5: Rollback if needed (uncomment if required)
-      # - name: Rollback deployment (optional)
-      #   run: kubectl rollout undo deployment/titanic-api
+          kubectl get pods
