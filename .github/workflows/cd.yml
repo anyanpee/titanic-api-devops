@@ -1,38 +1,40 @@
-name: CD – Deploy to Kubernetes
+name: Deploy to EKS
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
+      - main  # change if your default branch is different
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE }}
-
     steps:
-      - name: Checkout code
+      # Step 1: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v4
+      # Step 2: Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          version: v1.29.0
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
+      # Step 3: Set up kubeconfig
       - name: Configure kubeconfig
         run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > ~/.kube/config
+          chmod 600 ~/.kube/config
 
-      - name: Deploy to Kubernetes
+      # Step 4: Deploy manifests to EKS
+      - name: Apply Kubernetes manifests
         run: |
           kubectl apply -f k8s/
-          kubectl rollout status deployment/titanic-api --timeout=120s
+          kubectl rollout status deployment/titanic-api
 
-      - name: Rollback on failure
-        if: failure()
-        run: |
-          kubectl rollout undo deployment/titanic-api
+      # Optional Step 5: Rollback if needed (uncomment if required)
+      # - name: Rollback deployment (optional)
+      #   run: kubectl rollout undo deployment/titanic-api
