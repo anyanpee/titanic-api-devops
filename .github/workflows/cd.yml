@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: your-dockerhub-username/titanic-api
+  IMAGE_NAME: anyankpele/titanic-api
   IMAGE_TAG: latest
 
 jobs:
