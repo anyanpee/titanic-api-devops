@@ -29,7 +29,8 @@ git clone https://github.com/<your-username>/titanic-api.git
 cd titanic-api
 ```
 ![Git clone Screenshot]
-![](Git clone Screenshot.png)
+![](<Git clone Screenshot.png>)
+
 ---
 
 ## Step 2: Flask Application Setup
@@ -52,7 +53,7 @@ pip install -r requirements.txt
 python run.py
 ```
 ![Copied flasked Screenshot]
-![](Copied flaskapp code into repo Screenshot .png)
+![](<Copied flaskapp code into repo Screenshot .png>)
 
 ![Flask app on browser Screenshot]
 ![](Flask app on browser Screenshot .png)
@@ -81,7 +82,7 @@ docker run -p 5000:5000 titanic-api:latest
 ```
 
 ![Docker file created screenshot]
-![](Docker file created Screenshot.png)
+![](<Docker file created Screenshot.png>)
 
 ![Docker runnings screenshot]
 ![](Docker running Screenshot .png)
