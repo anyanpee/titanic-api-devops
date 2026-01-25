@@ -85,10 +85,11 @@ docker run -p 5000:5000 titanic-api:latest
 ![](<Docker file created Screenshot.png>)
 
 ![Docker runnings screenshot]
-![](Docker running Screenshot .png)
+![](<Docker running Screenshot .png>)
 
 ![Docker contact screenshot]
-![](docker containers created & running Screenshot.png)
+![](<docker containers created & running Screenshot.png>)
+
 ---
 
 ## Step 4: Docker Image Management
@@ -101,10 +102,10 @@ docker push <dockerhub-username>/titanic-api:latest
 ```
 
 ![Container image in Docker Desktop Screenshot]
-![](contanier image in docker desktop Screenshot .png)
+![](<contanier image in docker desktop Screenshot .png>)
 
 ![Docker images created by build in Docker Desktop Screenshot]
-![](docker images created by build in docker desktop Screenshot .png)
+![](<docker images created by build in docker desktop Screenshot .png>)
 
 ---
 
