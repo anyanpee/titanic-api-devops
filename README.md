@@ -129,10 +129,10 @@ Secrets configured in GitHub:
 
 
 ![GitHub CI Workflow Created Screenshot]
-![alt text](Github CI Workflow Created  Screenshot.png)
+![](<Github CI Workflow Created  Screenshot.png>)
 
 ![GitHub Action test job ran success Screenshot]
-![](Github action test job ran success Screenshot .png)
+![](<Github action test job ran success Screenshot .png>)
 
 ---
 
@@ -146,14 +146,13 @@ kubectl apply -f k8s/
 
 📸 Screenshot:
 ![GitHub Action secret config for CD Screenshot]
-![](github action secret config for cd Screenshot .png)
+![](<github action secret config for cd Screenshot .png>)
 
 ![GitHub Action deployment success Screenshot]
-![](Github action deployment succes Screenshot .png)
+![](<Github action deployment succes Screenshot .png>)
 
 ![Roll back deployment success Screenshot]
-![](Roll back deployment success Screenshot .png)
-
+![](<Roll back deployment success Screenshot .png>)
 
 ---
 
@@ -181,10 +180,10 @@ This creates:
 * VPC networking
 
 ![Terraform apply complete for eks creation screenshot]
-![](Terraform apply complete for eks creation screenshot .png)
+![](<Terraform apply complete for eks creation screenshot .png>)
 
 ![EKS creation screenshot]
-![](eks cluster on aws dashboard Screenshot.png)
+![](<eks cluster on aws dashboard Screenshot.png>)
 
 ---
 
