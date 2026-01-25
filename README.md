@@ -196,13 +196,14 @@ kubectl apply -f titanic-api-deployment.yaml
 kubectl get pods
 ```
 ![kubectl apply -f k8s deployment success Screenshot]
-![](kubectl apply -f k8s deployment success Screenshot .png)
+![](<kubectl apply -f k8s deployment success Screenshot .png>)
 
 ![All pods running success from terminal Screenshot]
-![](All pods running success from terminal Screenshot .png)
+![](<All pods running success from terminal Screenshot .png>)
 
 ![Titanic API running on Kubernetes confirmation Screenshot]
-![](Titanic Api running on kubernetes confirmation Screenshot .png)
+![](<Titanic Api running on kubernetes confirmation Screenshot .png>)
+
 ---
 
 ## Step 9: Secrets Management
@@ -218,7 +219,7 @@ kubectl create secret generic titanic-db-secret \
 Secrets are injected as environment variables.
 
 ![secret for database credentials Screenshot]
-![](secret for database credentials Screenshot .png)
+![](<secret for database credentials Screenshot .png>)
 
 ---
 
@@ -242,10 +243,10 @@ TLS and encryption configuration files were created to:
 * Encrypt database connections
 
 ![created file for TLS and SSL security Screenshot]
-![](created file for TLS and SSL security Screenshot .png)
+![](<created file for TLS and SSL security Screenshot .png>)
 
 ![file for database encryption Screenshot]
-![](file for database encryption Screenshot .png)
+![](<file for database encryption Screenshot .png>)
 
 ---
 
@@ -264,13 +265,13 @@ Metrics collected:
 * Pod health
 
 ![prometheus & grafana installation Screenshot]
-![](prometheus & grafana installation Screenshot .png)
+![](<prometheus & grafana installation Screenshot .png>)
 
 ![data source prometheus added Screenshot]
-![](data source prometheus added Screenshot .png)
+![](<data source prometheus added Screenshot .png>)
 
 ![prometheus node cpu usage metrics Screenshot]
-![](prometheus node cpu usage metrics  Screenshot .png)
+![](<prometheus node cpu usage metrics  Screenshot .png>)
 
 ---
 
@@ -283,7 +284,9 @@ Implemented:
 * NetworkPolicy hardening
 
 ![Advanced features and HPA, PDB, NetworkPolicy Screenshot]
-![](Advanced features and HPA, PDB, NetworkPolicy Screenshot .png)
+![](<Advanced features and HPA, PDB, NetworkPolicy Screenshot .png>)
+
+
 ---
 
 ## Security Summary
